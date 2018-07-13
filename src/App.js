@@ -57,6 +57,14 @@ class App extends Component {
       })
     });
 
+  removeGuestAt = index => 
+    this.setState({
+      guests: [
+        ...this.state.guests.slice(0, index),
+        ...this.state.guests.slice(index + 1),
+      ]
+    })
+
   toggleFilter = () => this.setState({isFiltered: !this.state.isFiltered});
 
   handleNameInput = (e) => this.setState({pendingGuest: e.target.value});
@@ -123,6 +131,7 @@ class App extends Component {
             guests={this.state.guests}
             toggleConfirmationAt={this.toggleConfirmationAt}
             toggleEditingAt={this.toggleEditingAt}
+            removeGuestAt={this.removeGuestAt}
             setNameAt={this.setNameAt}
             isFiltered={this.state.isFiltered}
           />
